@@ -1,0 +1,41 @@
+/* General settings */
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Limit main content width */
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Header styles */
+header h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    color: #006EB6;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Footer logo */
+footer img {
+    width: 150px;
+    margin-top: 30px;
+}
+
+/* Space paragraphs */
+main p {
+    margin-bottom: 20px;
+}
