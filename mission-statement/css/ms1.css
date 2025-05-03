@@ -27,6 +27,7 @@ header h2 {
     font-size: 1.5rem;
     font-weight: 300;
     letter-spacing: 1px;
+    color: #006EB6;
 }
 
 main {
@@ -52,4 +53,23 @@ footer {
 footer img {
     width: 200px;
     max-width: 80%;
+}
+
+
+.dark {
+    background-color: #333;
+    color: white;
+}
+
+.dark main {
+    background: #444;
+    color: white;
+}
+
+.dark header {
+    background-color: #111;
+}
+
+.dark header h2 {
+    color: #70B7E0;
 }

@@ -7,25 +7,34 @@
     <title>BYU-Idaho Mission Statement</title>
     <link rel="stylesheet" href="css/ms1.css">
 </head>
-<body>
+<body class="dark">
 
-<header>
-    <h1>Brigham Young University-Idaho</h1>
-    <h2>Mission Statement</h2>
-</header>
+    <label for="theme">Choose theme: </label>
+    <select id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
 
-<main>
-    <p>
-        Brigham Young University-Idaho was founded and is supported and guided by The Church of Jesus Christ of Latter-day Saints. Its mission is to develop disciples of Jesus Christ who are leaders in their homes, the Church, and their communities.
-    </p>
-    <p>
-        The university does this by: Building testimonies of the restored gospel of Jesus Christ and fostering its principles in a wholesome academic, cultural, and social environment. Providing a high-quality education that prepares students of diverse interests and abilities for lifelong learning and employment. Serving as many students as possible within resource constraints. Delivering education that is affordable for students and the Church.
-    </p>
-</main>
+    <header>
+        <h1>Brigham Young University-Idaho</h1>
+        <h2>Mission Statement</h2>
+    </header>
 
-<footer>
-    <img src="images/byui-logo_blue.webp" alt="BYU-Idaho Logo">
-</footer>
+    <main>
+        <p>
+            Brigham Young University-Idaho was founded and is supported and guided by The Church of Jesus Christ of Latter-day Saints. Its mission is to develop disciples of Jesus Christ who are leaders in their homes, the Church, and their communities.
+        </p>
+        <p>
+            The university does this by: Building testimonies of the restored gospel of Jesus Christ and fostering its principles in a wholesome academic, cultural, and social environment. Providing a high-quality education that prepares students of diverse interests and abilities for lifelong learning and employment. Serving as many students as possible within resource constraints. Delivering education that is affordable for students and the Church.
+        </p>
+    </main>
 
+    <footer>
+        <img id="logo" src="images/byui-logo_blue.webp" alt="BYU-Idaho Logo">
+    </footer>
+
+
+    <script src="js/mission.js" defer></script>
 </body>
 </html>
+
