@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+form {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-container {
+  display: grid;
+  grid-template-areas: "stack";
+  position: relative;
+}
+
+.card-front, .card-back {
+  grid-area: stack;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  z-index: 1;
+  background-color: #c0c0c0;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.card-image {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+@media (max-width: 500px) {
+  .form-container {
+    padding: 10px;
+  }
+
+  form {
+    padding: 15px;
+  }
+}
