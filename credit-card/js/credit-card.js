@@ -1,20 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cardNumber = document.getElementById('card-number');
-  const expiration = document.getElementById('expiration');
+  const expMonth = document.getElementById('exp-month');
+  const expYear = document.getElementById('exp-year');
 
-  // Format card number: 1234 5678 9012 3456
   cardNumber.addEventListener('input', () => {
     let value = cardNumber.value.replace(/\D/g, '').substring(0, 16);
     value = value.replace(/(.{4})/g, '$1 ').trim();
     cardNumber.value = value;
   });
 
-  // Format expiration date: MM/YY
-  expiration.addEventListener('input', () => {
-    let value = expiration.value.replace(/\D/g, '').substring(0, 4);
-    if (value.length >= 3) {
-      value = value.substring(0, 2) + '/' + value.substring(2);
-    }
-    expiration.value = value;
+  [expMonth, expYear].forEach(field => {
+    field.addEventListener('input', () => {
+      field.value = field.value.replace(/\D/g, '').substring(0, 2);
+    });
   });
 });
