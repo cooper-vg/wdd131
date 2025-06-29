@@ -1,52 +1,79 @@
-import { recipes } from './recipes.mjs';
+import { recipes } from './recipe.mjs'; // ← This works *only if* recipes.mjs is in the same folder
 
-const recipeSection = document.querySelector('.recipes-container');
-const searchForm = document.querySelector('form');
-const searchInput = document.getElementById('search');
-
-// Render a single recipe card
-function renderRecipe(recipe) {
-  const article = document.createElement('article');
-  article.classList.add('recipe-card');
-
-  article.innerHTML = `
-    <img src="${recipe.image}" alt="${recipe.name}">
-    <div class="recipe-info">
-      <div class="tags">
-        ${recipe.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-      </div>
-      <h2>${recipe.name}</h2>
-      <span class="rating" role="img" aria-label="Rating: ${recipe.rating} out of 5 stars">
-        ${'⭐'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}
-      </span>
-      <p class="description">${recipe.description}</p>
-    </div>
-  `;
-
-  recipeSection.appendChild(article);
+function getRandomIndex(max) {
+  return Math.floor(Math.random() * max);
 }
 
-// Display filtered recipes
-function displayRecipes(filter = '') {
-  recipeSection.innerHTML = '';
-  const filtered = recipes.filter(recipe =>
-    recipe.name.toLowerCase().includes(filter.toLowerCase()) ||
-    recipe.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
-  );
+function getRandomListEntry(list) {
+  const index = getRandomIndex(list.length);
+  return list[index];
+}
 
-  if (filtered.length === 0) {
-    recipeSection.innerHTML = '<p>No matching recipes found.</p>';
-    return;
+function tagsTemplate(tags) {
+  return `<ul class="recipe__tags">
+    ${tags.map(tag => `<li>${tag}</li>`).join('')}
+  </ul>`;
+}
+
+function ratingTemplate(rating) {
+  let html = `<span class="rating" role="img" aria-label="Rating: ${rating} out of 5 stars">`;
+  for (let i = 1; i <= 5; i++) {
+    html += i <= rating
+      ? `<span aria-hidden="true" class="icon-star">⭐</span>`
+      : `<span aria-hidden="true" class="icon-star-empty">☆</span>`;
   }
-
-  filtered.forEach(renderRecipe);
+  html += `</span>`;
+  return html;
 }
 
-// Handle search
-searchForm.addEventListener('submit', e => {
-  e.preventDefault();
-  displayRecipes(searchInput.value.trim());
-});
+function recipeTemplate(recipe) {
+  return `
+    <figure class="recipe">
+      <img src="${recipe.image}" alt="Image of ${recipe.name}" />
+      <figcaption>
+        ${tagsTemplate(recipe.tags)}
+        <h2><a href="#">${recipe.name}</a></h2>
+        <p class="recipe__ratings">${ratingTemplate(recipe.rating)}</p>
+        <p class="recipe__description">${recipe.description}</p>
+      </figcaption>
+    </figure>
+  `;
+}
 
-// Initial load
-displayRecipes();
+function renderRecipes(recipeList) {
+  const container = document.querySelector('.recipes-container');
+  container.innerHTML = recipeList.map(recipe => recipeTemplate(recipe)).join('');
+}
+
+function filterRecipes(query) {
+  query = query.toLowerCase();
+  const filtered = recipes.filter(recipe =>
+    recipe.name.toLowerCase().includes(query) ||
+    recipe.description.toLowerCase().includes(query) ||
+    recipe.tags.find(tag => tag.toLowerCase().includes(query))
+  );
+  return filtered.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function searchHandler(event) {
+  event.preventDefault();
+  const input = document.getElementById('search');
+  const query = input.value.trim().toLowerCase();
+  const results = filterRecipes(query);
+
+  if (results.length === 0) {
+    document.querySelector('.recipes-container').innerHTML = '<p>No matching recipes found.</p>';
+  } else {
+    renderRecipes(results);
+  }
+}
+
+function init() {
+  const randomRecipe = getRandomListEntry(recipes);
+  renderRecipes([randomRecipe]);
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', searchHandler);
+}
+
+init();
