@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pantry - Meal Mate</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/pantry.js"></script>
+</head>
+<body>
+  <header>
+    <img src="images/personal-site-logo.png" alt="Meal Mate Logo" class="logo" />
+    <h1>Meal Mate</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="meal-ideas.html">Meal Ideas</a>
+      <a href="pantry.html">Pantry</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Your Pantry</h2>
+      <p>Manage your list of available ingredients below:</p>
+
+      <form id="pantry-form">
+        <input type="text" id="ingredient-input" placeholder="Enter ingredient" required />
+        <button type="submit">Add Ingredient</button>
+      </form>
+
+      <ul id="pantry-list"></ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Meal Mate | Cooper Van Gieson</p>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="meal-ideas.html">Meal Ideas</a> |
+      <a href="pantry.html">Pantry</a>
+    </nav>
+  </footer>
+</body>
+</html>
